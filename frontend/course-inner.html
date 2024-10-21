@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multipage Responsive Website</title>
+    <link rel="stylesheet" href="web.css">
+    <link rel="stylesheet" href="ab.css">
+    <link rel="stylesheet" href="course.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <nav>
+        <img src="ed.png" class="img1" alt="Logo">
+        <div class="navbar">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="course.html" class="active" style="color:rgb(243, 170, 14)">Courses</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="login.html">My Dashboard</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="about-home">
+        <h2>Enroll in Our Popular Courses and Skill Up!</h2>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="course-inner">
+        <div class="overview">
+            <img class="c-image" src="c1.jpg" alt="JavaScript Course Image">
+            <div class="course-head">
+                <h3>JavaScript Beginner's Course</h3>
+                <div class="star">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <p>Modern JavaScript from beginner to expert level!</p>
+            </div>
+            <div class="cos">
+                <span>259/-</span>
+            </div>
+
+            <div class="instructor">
+                <div class="tutor">
+                    <img src="images/c4.jpg" alt="Instructor">
+                    <div class="tutor-det">
+                        <h5>John Doe</h5>
+                        <p>Web Developer at Infosys</p>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="course-overview">
+                <h3>Course Overview</h3>
+                <p>The JavaScript course is meticulously designed to cater to both beginners and experienced developers aiming to master this versatile programming language. Through hands-on projects, coding exercises, and real-world examples, you'll gain practical experience and confidence in your JavaScript skills.</p>
+                <hr>
+                <h3>What will you learn</h3>
+                <ul class="learn">
+                    <li><i class="far fa-check-circle"></i> JavaScript from beginner to advanced</li>
+                    <li><i class="far fa-check-circle"></i> Variables, functions, objects, and arrays</li>
+                    <li><i class="far fa-check-circle"></i> Object-Oriented Programming</li>
+                    <li><i class="far fa-check-circle"></i> Project-driven learning with plenty of examples</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Enroll Button -->
+        <div class="enroll">
+            <h3>This course includes:</h3>
+            <p><i class="far fa-video"></i>85 hours of video</p>
+            <p><i class="far fa-newspaper"></i>55 articles</p>
+            <p><i class="far fa-cloud-download"></i>Downloadable resources</p>
+            <p><i class="far fa-infinity"></i>Lifetime Access</p>
+            <p><i class="far fa-mobile-alt"></i>Mobile view access</p>
+            <p><i class="far fa-paperclip"></i>Assignments</p>
+            <p><i class="fa-solid fa-trophy"></i>Certificate of completion</p>
+            <div class="enrol-btn">
+                <a class="blue" href="javascript:void(0)" onclick="openEnrollPopup()">Enroll in Course</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enrollment Popup -->
+    <div id="enrollPopup" class="popup" style="display: none;">
+        <div class="popup-content">
+            <h3>Enroll in JavaScript Course</h3>
+            <form id="enrollForm">
+                <label for="username">Name:</label>
+                <input type="text" id="username" required><br>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" required><br>
+
+                <label for="phone">Phone:</label>
+                <input type="tel" id="phone" required><br>
+
+                <label for="courseCost">Course Cost:</label>
+                <input type="text" id="courseCost" readonly value="259/-"><br>
+
+                <label for="paymentMethod">Payment Method:</label>
+                <select id="paymentMethod" required>
+                    <option value="UPI">UPI</option>
+                    <option value="PhonePe">PhonePe</option>
+                    <option value="Credit Card">Credit Card</option>
+                    <option value="Net Banking">Net Banking</option>
+                </select><br>
+
+                <button type="submit">Submit</button>
+                <button type="button" onclick="closeEnrollPopup()">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Thank You Popup -->
+    <div id="thankYouPopup" class="popup" style="display: none;">
+        <div class="popup-content">
+            <h3>Thank You for Enrolling!</h3>
+            <p>You can start your journey now.</p>
+            <button type="button" onclick="closeThankYouPopup()">Close</button>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <!-- Footer content -->
+    </footer>
+
+    <script>
+        // Open the Enroll Popup
+        function openEnrollPopup() {
+            document.getElementById('enrollPopup').style.display = 'block';
+        }
+
+        // Close the Enroll Popup
+        function closeEnrollPopup() {
+            document.getElementById('enrollPopup').style.display = 'none';
+        }
+
+        // Close the Thank You Popup
+        function closeThankYouPopup() {
+            document.getElementById('thankYouPopup').style.display = 'none';
+        }
+
+        // Form Validation Function
+        function validateForm() {
+            const username = document.getElementById('username').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const paymentMethod = document.getElementById('paymentMethod').value;
+
+            // Check for empty fields
+            if (!username || !email || !phone || !paymentMethod) {
+                alert('All fields are required for enrollment.');
+                return false;
+            }
+
+            // Validate email format
+            const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            if (!emailPattern.test(email)) {
+                alert('Please enter a valid email address.');
+                return false;
+            }
+
+            // Validate phone number (10 digits for India)
+            const phonePattern = /^[0-9]{10}$/;
+            if (!phonePattern.test(phone)) {
+                alert('Please enter a valid 10-digit phone number.');
+                return false;
+            }
+
+            // If all validations pass, return true
+            return true;
+        }
+
+        // Handle the form submission and store the course data
+        document.getElementById('enrollForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Validate form
+            if (!validateForm()) {
+                console.log("Form validation failed!");
+                return; // Do not proceed with the form submission
+            }
+
+            // Collect form data
+            const formData = {
+                username: document.getElementById('username').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                phone: document.getElementById('phone').value.trim(),
+                courseName: 'JavaScript Beginner\'s Course',
+                courseCost: document.getElementById('courseCost').value.trim(),
+                paymentMethod: document.getElementById('paymentMethod').value
+            };
+
+            // Check if the user is already enrolled in this course
+            fetch('http://localhost:3000/api/enroll', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    return response.json().then(data => { throw new Error(data.message); });
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Enrollment successful
+                closeEnrollPopup();
+                document.getElementById('thankYouPopup').style.display = 'block';
+
+                // Redirect to the dashboard after a few seconds
+                setTimeout(() => {
+                    window.location.href = '#'; // Redirect to dashboard.html
+                }, 2000);
+            })
+            .catch(error => {
+                alert(error.message); // Show the error message (e.g., "User already enrolled in this course.")
+            });
+        });
+    </script>
+    
+</body>
+</html>

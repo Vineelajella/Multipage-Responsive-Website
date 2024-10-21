@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multipage Responsive Website</title>
+    <link rel="stylesheet" href="web.css">
+    <link rel="stylesheet" href="ab.css">
+    <link rel="stylesheet" href="course.css">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <img src="ed.png" class="img1" alt="Logo">
+        <div class="navbar">
+            <ul>
+                <li><a href="index.html" >Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="course.html" class="active" style="color:rgb(243, 170, 14)">Courses</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="login.html">My Dashboard</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!--Home-->
+    <section id="about-home">
+        <h2>Enroll in Our Popular Courses and SkillUp!</h2>
+    </section>
+
+    <!--Courses-->
+    <section id="course-inner">
+        <div class="overview">
+            <img class="c-image" src="images/uiux.jpg" alt="">
+            <div class="course-head">
+                <div class="c-name">
+                    <h3>UI/UX Design Course</h3>
+                </div>
+                <div class="star">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <p>Become an expert in User Interface and User Experience design, and learn how to create intuitive and visually appealing interfaces.</p>
+            </div>
+            <div class="cos">
+                <span>399/-</span>
+            </div>
+
+            <div class="instructor">
+                <div class="tutor">
+                    <img src="images/c4.jpg" alt="Instructor Image">
+                    <div class="tutor-det">
+                        <h5>Emily Davis</h5>
+                        <p>Senior UI/UX Designer at Google</p>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="course-overview">
+                <h3>Course Overview</h3>
+                <p>This comprehensive UI/UX course is designed to equip you with the skills to create user-centered designs that are not only aesthetically pleasing but also functional. In this course, you'll learn the fundamentals of both **User Interface (UI)** and **User Experience (UX)** design. You'll dive into design thinking, wireframing, prototyping, usability testing, and responsive design. You'll also get hands-on experience with tools like **Figma**, **Adobe XD**, and **Sketch**.
+                    <br><br>
+                    The course will cover essential concepts like **color theory**, **typography**, **layout principles**, and **user research**. You'll also learn how to create interactive prototypes and conduct user testing to ensure the design meets user needs. By the end of the course, you'll have built a strong portfolio of UI/UX projects that will showcase your design skills and creativity.
+                </p>
+                <hr>
+                <br>
+                <h3>What will you learn</h3>
+                <br>
+                <div class="learn">
+                    <p><i class="far fa-check-circle"></i>Understanding UI/UX principles and best practices</p>
+                    <p><i class="far fa-check-circle"></i>Mastering tools like Figma, Adobe XD, and Sketch</p>
+                    <p><i class="far fa-check-circle"></i>Creating wireframes and interactive prototypes</p>
+                    <p><i class="far fa-check-circle"></i>Conducting user research and usability testing</p>
+                    <p><i class="far fa-check-circle"></i>Designing responsive interfaces for mobile and web</p>
+                    <p><i class="far fa-check-circle"></i>Building a professional UI/UX design portfolio</p>
+                    <p><i class="far fa-check-circle"></i>Implementing design thinking and problem-solving techniques</p>
+                </div>
+            </div>
+        </div>
+        <div class="enroll">
+            <h3>This course includes:</h3>
+            <p><i class="far fa-video"></i>40 hours of video</p>
+            <p><i class="far fa-newspaper"></i>60 articles</p>
+            <p><i class="far fa-cloud-download"></i>Downloadable resources</p>
+            <p><i class="far fa-infinity"></i>Lifetime Access</p>
+            <p><i class="far fa-mobile-alt"></i>Mobile view access</p>
+            <p><i class="far fa-paperclip"></i>Assignments</p>
+            <p><i class="fa-solid fa-trophy"></i>Certificate of completion</p>
+            <div class="enrol-btn">
+                <a class="blue" href="javascript:void(0)" onclick="openEnrollPopup()">Enroll in Course</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enrollment Popup -->
+    <div id="enrollPopup" class="popup" style="display: none;">
+        <div class="popup-content">
+            <h3>Enroll in JavaScript Course</h3>
+            <form id="enrollForm">
+                <label for="username">Name:</label>
+                <input type="text" id="username" required><br>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" required><br>
+
+                <label for="phone">Phone:</label>
+                <input type="tel" id="phone" required><br>
+
+                <label for="courseCost">Course Cost:</label>
+                <input type="text" id="courseCost" readonly value="399/-"><br>
+
+                <label for="paymentMethod">Payment Method:</label>
+                <select id="paymentMethod" required>
+                    <option value="UPI">UPI</option>
+                    <option value="PhonePe">PhonePe</option>
+                    <option value="Credit Card">Credit Card</option>
+                    <option value="Net Banking">Net Banking</option>
+                </select><br>
+
+                <button type="submit">Submit</button>
+                <button type="button" onclick="closeEnrollPopup()">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Thank You Popup -->
+    <div id="thankYouPopup" class="popup" style="display: none;">
+        <div class="popup-content">
+            <h3>Thank You for Enrolling!</h3>
+            <p>You can start your journey now.</p>
+            <button type="button" onclick="closeThankYouPopup()">Close</button>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <!-- Footer content -->
+    </footer>
+
+    <script>
+        // Open the Enroll Popup
+        function openEnrollPopup() {
+            document.getElementById('enrollPopup').style.display = 'block';
+        }
+
+        // Close the Enroll Popup
+        function closeEnrollPopup() {
+            document.getElementById('enrollPopup').style.display = 'none';
+        }
+
+        // Close the Thank You Popup
+        function closeThankYouPopup() {
+            document.getElementById('thankYouPopup').style.display = 'none';
+        }
+
+        // Form Validation Function
+        function validateForm() {
+            const username = document.getElementById('username').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const paymentMethod = document.getElementById('paymentMethod').value;
+
+            // Check for empty fields
+            if (!username || !email || !phone || !paymentMethod) {
+                alert('All fields are required for enrollment.');
+                return false;
+            }
+
+            // Validate email format
+            const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            if (!emailPattern.test(email)) {
+                alert('Please enter a valid email address.');
+                return false;
+            }
+
+            // Validate phone number (10 digits for India)
+            const phonePattern = /^[0-9]{10}$/;
+            if (!phonePattern.test(phone)) {
+                alert('Please enter a valid 10-digit phone number.');
+                return false;
+            }
+
+            // If all validations pass, return true
+            return true;
+        }
+
+        // Handle the form submission and store the course data
+        document.getElementById('enrollForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Validate form
+            if (!validateForm()) {
+                console.log("Form validation failed!");
+                return; // Do not proceed with the form submission
+            }
+
+            // Collect form data
+            const formData = {
+                username: document.getElementById('username').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                phone: document.getElementById('phone').value.trim(),
+                courseName: 'UI/UX Course',
+                courseCost: document.getElementById('courseCost').value.trim(),
+                paymentMethod: document.getElementById('paymentMethod').value
+            };
+
+            // Check if the user is already enrolled in this course
+            fetch('http://localhost:3000/api/enroll', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    return response.json().then(data => { throw new Error(data.message); });
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Enrollment successful
+                closeEnrollPopup();
+                document.getElementById('thankYouPopup').style.display = 'block';
+
+                // Redirect to the dashboard after a few seconds
+                setTimeout(() => {
+                    window.location.href = '#'; // Redirect to dashboard.html
+                }, 2000);
+            })
+            .catch(error => {
+                alert(error.message); // Show the error message (e.g., "User already enrolled in this course.")
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - EduConnect</title>
+    <link rel="stylesheet" href="web.css">
+    <link rel="stylesheet" href="ab.css">
+    <link rel="stylesheet" href="course.css">
+    <link rel="stylesheet" href="contact.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar Section -->
+    <nav>
+        <img src="ed.png" class="img1" alt="EduConnect Logo">
+        <div class="navbar">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="course.html">Courses</a></li>
+                <li><a href="contact.html" class="active" style="color:rgb(243, 170, 14)">Contact</a></li>
+                <li><a href="login.html">My Dashboard</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Contact Us Header Section -->
+    <section id="about-home">
+        <h2>Contact Us</h2>
+    </section>
+
+    <!-- Main Contact Section -->
+    <section id="contact">
+        <div class="getin">
+            <h2>Get in Touch</h2>
+            <p>Looking for help? Fill out the form below to start a new adventure.</p><hr>
+            
+            <!-- Contact Information -->
+            <div class="getin-det">
+                <h3>Headquarters</h3>
+                <div>
+                    <i class="fa-solid fa-home get"></i>
+                    <p>744 New York Ave, Brooklyn, Kings, New York 10244</p>
+                </div><hr>
+                <h3>Phone</h3>
+                <div>
+                    <i class="fas fa-phone get"></i>
+                    <p>(+642) 245 356 432<br>(+420) 336 476 328</p>
+                </div><hr>
+                <h3>Email Support</h3>
+                <div>
+                    <i class="fas fa-envelope get"></i>
+                    <p>educonnect@gmail.com<br>help@educonnect.com</p>
+                </div><hr>
+                <h3>Follow Us</h3>
+                <div class="socicons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Form Section -->
+        <div class="form">
+            <h4>Let's Connect</h4>
+            <p>Fill out the form below and we'll get back to you as soon as possible.</p>
+            <form id="contactForm">
+                <div class="form-row">
+                    <input type="text" placeholder="Your Name" name="name" required>
+                    <input type="email" placeholder="Your Email" name="email" required><br>
+                </div>
+                <div class="form-col">
+                    <input type="text" placeholder="Subject" name="subject" required><br>
+                    <textarea name="message" cols="30" rows="8" placeholder="How can we help you?" required></textarea><br><br>
+                    <button type="submit">Send Message</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Embedded Google Map Section -->
+    <section id="map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9864736132825!2d-73.94958208459436!3d40.647442279339865!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2437b9fa1d167%3A0x8eb44720df9b141a!2sBrooklyn%2C%20NY%2011244%2C%20USA!5e0!3m2!1sen!2sin!4v1615426220380!5m2!1sen!2sin" style="border:0;" allowfullscreen loading="lazy"></iframe>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-container">
+            <p>&copy; 2024 EduConnect. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- JavaScript to handle form submission and save to localStorage -->
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData.entries());
+
+            // Retrieve existing messages from localStorage or initialize an empty array
+            let messages = JSON.parse(localStorage.getItem('messages')) || [];
+
+            // Add the new message with a date
+            data.date = new Date().toISOString();
+            messages.push(data);
+
+            // Save updated messages array back to localStorage
+            localStorage.setItem('messages', JSON.stringify(messages));
+
+            alert('Your message has been sent successfully!');
+            e.target.reset();  // Reset the form after successful submission
+        });
+    </script>
+</body>
+</html>

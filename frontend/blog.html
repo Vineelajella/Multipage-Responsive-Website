@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multipage Responsive Website</title>
+    <link rel="stylesheet" href="web.css">
+    <link rel="stylesheet" href="ab.css">
+    <link rel="stylesheet" href="blog.css">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Add styles for category section */
+        #blog-container .categories {
+            display: flex;
+            flex-direction: column;
+        }
+        .category {
+            display: none; /* Hide all categories by default */
+            margin-bottom: 70px;
+            margin-right:150px;
+        }
+        .blog-content{
+            margin-left:80px;
+        }
+        .category.active {
+            display: block; /* Display the active category */
+        }
+        .category h3 {
+            font-size: 1.5em;
+            margin: 0;
+            padding: 0;
+        }
+        .blo
+        .post img {
+            width: 100%;
+            height: auto;
+        }
+        .post {
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <img src="ed.png" class="img1" alt="Logo">
+        <div class="navbar">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html" class="active" style="color:rgb(243, 170, 14)">Blog</a></li>
+                <li><a href="course.html">Courses</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="login.html">My Dashboard</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Home -->
+    <section id="about-home">
+        <h2>Blog/</h2>
+    </section>
+
+    <section id="blog-container">
+        <div class="categories">
+            <h2>Categories</h2>
+            <hr>
+            <a href="#" data-category="web-development">Web Development</a>
+            <hr>
+            <a href="#" data-category="web-design">Web Design</a>
+            <hr>
+            <a href="#" data-category="app-development">App Development</a>
+            <hr>
+            <a href="#" data-category="full-stack">Full Stack</a>
+            <hr>
+            <a href="#" data-category="python-programming">Python Programming</a>
+            <hr>
+            <a href="#" data-category="java-programming">Java Programming</a>
+            <hr>
+            <a href="#" data-category="machine-learning">Machine Learning</a>
+            <hr>
+        </div>
+
+        <div class="blog-content">
+            <div class="category web-development">
+                <div class="post">
+                    <img src="b1.jpg" alt="Learn Web Development">
+                    <h3>Learn Web Development in the Easiest Way</h3>
+                    <p>
+                        At EduConnect, we believe that learning web development should be accessible and enjoyable for everyone. Our comprehensive courses are designed to guide you through the fundamentals and advanced concepts of web development with ease. Whether you are a complete beginner or looking to enhance your skills, our step-by-step tutorials, interactive exercises, and expert-led video lessons make it simple to grasp HTML, CSS, JavaScript, and beyond. With practical projects and real-world examples, you'll build confidence and proficiency as you progress. Join EduConnect today and start your journey to becoming a proficient web developer in no time!
+                    </p>
+                 
+                </div>
+            </div>
+
+            <div class="category app-development">
+                <div class="post">
+                    <img src="images/b2 (1).jpg" alt="Learn App Development">
+                    <h3>Learn App Development in the Easiest Way</h3>
+                    <p>
+                        App development is a comprehensive process of creating software applications for mobile devices, tablets, and digital platforms, vital for today's tech-driven world. At EduConnect, our app development courses guide you through every stage of this process, from ideation and design to development, testing, and deployment. You'll learn to use programming languages such as Swift for iOS and Java or Kotlin for Android, along with cross-platform frameworks like React Native and Flutter.
+                    </p>
+             
+                </div>
+            </div>
+
+            <div class="category full-stack">
+                <div class="post">
+                    <img src="images/full-stack-web-development.jpg" alt="Learn Full Stack Development">
+                    <h3>Learn Full Stack Development in the Easiest Way</h3>
+                    <p>
+                        Full Stack Development encompasses both the front-end and back-end aspects of web development. At EduConnect, our full stack development courses cover all the essential technologies and frameworks needed to build complete web applications. From mastering HTML, CSS, and JavaScript on the client side to working with databases, servers, and APIs on the server side, our courses provide a holistic approach to web development. You'll gain hands-on experience with popular tools and frameworks like React, Node.js, Express, and MongoDB. Whether you're starting from scratch or looking to expand your skill set, our comprehensive training will prepare you to tackle complex projects with confidence.
+                    </p>
+                   
+                </div>
+            </div>
+
+            <div class="category python-programming">
+                <div class="post">
+                    <img src="images/python.jpg" alt="Learn Python Programming">
+                    <h3>Learn Python Programming in the Easiest Way</h3>
+                    <p>
+                        Python is a versatile and powerful programming language used for a wide range of applications, from web development to data analysis and artificial intelligence. At EduConnect, our Python programming courses offer a deep dive into this dynamic language. You'll start with the basics of Python syntax and data structures, and progress to more advanced topics such as object-oriented programming, web frameworks like Django and Flask, and data manipulation with libraries like Pandas and NumPy. Our hands-on projects and real-world examples will help you build a solid foundation and prepare you for a career in various fields.
+                    </p>
+                  
+                </div>
+            </div>
+
+            <div class="category java-programming">
+                <div class="post">
+                    <img src="images/java.jpg" alt="Learn Java Programming">
+                    <h3>Learn Java Programming in the Easiest Way</h3>
+                    <p>
+                        Java is a widely-used programming language known for its portability, performance, and security. At EduConnect, our Java programming courses guide you through the core concepts of Java, including object-oriented programming, data structures, algorithms, and Java's extensive API. You'll gain practical experience with building Java applications, from desktop software to web applications using frameworks like Spring and Hibernate. Our comprehensive curriculum is designed to equip you with the skills needed to excel in software development and related fields.
+                    </p>
+                   
+                </div>
+            </div>
+
+            <div class="category machine-learning">
+                <div class="post">
+                    <img src="images/ml.avif" alt="Learn Machine Learning">
+                    <h3>Learn Machine Learning in the Easiest Way</h3>
+                    <p>
+                        Machine Learning is a rapidly evolving field that empowers computers to learn from data and make predictions. At EduConnect, our machine learning courses cover the essential techniques and algorithms used to build intelligent systems. You'll explore supervised and unsupervised learning, neural networks, deep learning, and practical applications of machine learning. Our hands-on projects and real-world case studies will help you understand how to apply these techniques to solve complex problems and gain insights from data.
+                    </p>
+                   
+                </div>
+            </div>
+
+            <div class="category web-design">
+                <div class="post">
+                    <img src="images/web-design-internet-website-responsive-software-concept.jpg" alt="Learn Web Design">
+                    <h3>Learn Web Design in the Easiest Way</h3>
+                    <p>
+                        Web Design focuses on creating visually appealing and user-friendly websites. At EduConnect, our web design courses teach you the principles of design, color theory, typography, and layout. You'll learn to use design tools such as Adobe XD, Figma, and Sketch to create stunning website designs. Our courses also cover responsive design techniques to ensure your websites look great on all devices. Whether you're interested in a career in web design or looking to enhance your design skills, our training will help you create beautiful and functional websites.
+                    </p>
+                  
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>Top Products</h3>
+                <ul>
+                    <li>Online Courses</li>
+                    <li>Certification Programs</li>
+                    <li>E-books</li>
+                    <li>Video Tutorials</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li>Home</li>
+                    <li>About Us</li>
+                    <li>Blog</li>
+                    <li>Contact</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Features</h3>
+                <ul>
+                    <li>Interactive Learning</li>
+                    <li>Expert Instructors</li>
+                    <li>Flexible Schedule</li>
+                    <li>Affordable Pricing</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Resources</h3>
+                <ul>
+                    <li>Help Center</li>
+                    <li>Community Forum</li>
+                    <li>Tutorials</li>
+                    <li>FAQs</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Newsletter</h3>
+                <p>You can trust us. We only send promo offers.</p>
+                <div class="subscribe">
+                    <input type="email" placeholder="Enter Your Email" name="">
+                    <a class="yellow" href="#">Subscribe</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="web.js"></script>
+    <script src="ab.js"></script>
+    <script src="blog.js"></script>
+    <script>
+        // JavaScript for category filtering
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('.categories a');
+            const categories = document.querySelectorAll('.category');
+
+            // Show default category
+            const defaultCategory = 'web-development'; // Change this to the default category you want to show
+            document.querySelector(`.category.${defaultCategory}`).classList.add('active');
+
+            links.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    const category = this.getAttribute('data-category');
+                    categories.forEach(cat => {
+                        if (cat.classList.contains(category)) {
+                            cat.classList.add('active');
+                        } else {
+                            cat.classList.remove('active');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

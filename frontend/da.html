@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+            color: #333;
+        }
+
+        nav {
+            background-color: #4c4c9d;
+            color: white;
+            width: 250px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav h3 {
+            margin: 0;
+            padding: 10px 0;
+            text-align: center;
+            color: #ffc107;
+            font-size: 24px;
+        }
+
+        nav .username {
+            margin-bottom: 30px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            margin: 10px 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 12px 15px;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+            display: block;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        nav a:hover {
+            background-color: #6a67ce;
+        }
+
+        nav .active {
+            background-color: #ffc107;
+            color: black;
+        }
+
+        main {
+            margin-left: 250px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            padding: 0;
+        }
+
+        #dashboard {
+            flex-grow: 1;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #dashboard h2 {
+            margin-bottom: 20px;
+            color: #4c4c9d;
+            text-align: center;
+        }
+
+        #dashboardSections {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .section {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            margin-left: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .section:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h3 {
+            color: #4c4c9d;
+            margin-bottom: 10px;
+        }
+
+        .section p {
+            color: #555;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        #enrolledCourses,
+        #courseVideos {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: calc(100% - 120px);
+            margin: 20px auto;
+            height: auto;
+            overflow-y: auto;
+            display: none; /* Initially hidden */
+        }
+
+        .course {
+            background: #f9f9f9;
+            border: 1px solid #dedede;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: box-shadow 0.3s;
+        }
+
+        .course:hover {
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .course h3 {
+            color: #4c4c9d;
+            margin-bottom: 10px;
+        }
+
+        .course p {
+            color: #555;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .course video {
+            width: 100%;
+            height: 200px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .course video::-webkit-media-controls {
+            background-color: #4c4c9d;
+        }
+
+        .course video::-webkit-media-controls-enclosure {
+            background-color: #4c4c9d;
+        }
+
+        .course video::-webkit-media-controls-panel {
+            background-color: #4c4c9d;
+        }
+
+        .course video::-webkit-media-controls-play-button {
+            background-color: #4c4c9d;
+        }
+
+        .course video::-webkit-media-controls-timeline {
+            background-color: #4c4c9d;
+        }
+
+        .course video::-webkit-media-controls-volume-slider-container {
+            background-color: #4c4c9d;
+        }
+
+        .course video::-webkit-media-controls-volume-slider {
+            background-color: #4c4c9d;
+        }
+
+        .course video::-webkit-media-controls-mute-button {
+            background-color: #4c4c9d;
+        }
+
+        .course video::-webkit-media-controls-fullscreen-button {
+            background-color: #4c4c9d;
+        }
+
+        .course video::-webkit-media-controls-rewind-button {
+            background-color: #4c4c9d;
+        }
+
+        .course video::-webkit-media-controls-return-to-realtime-button {
+            background-color: #4c4c9d;
+        }
+
+        .course video::-webkit-media-controls-toggle-closed-captions-button {
+            background-color: #4c4c9d;
+        }
+
+        .course video::-webkit-media-controls-toggle-fullscreen-button {
+            background-color: #4c4c9d;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <h3>Dashboard</h3>
+        <p class="username">John Doe</p>
+        <ul>
+            <li><a href="#" class="active">Dashboard</a></li>
+            <li><a href="#">Enrolled Courses</a></li>
+            <li><a href="#">Course Videos</a></li>
+            <li><a href="#">Settings</a></li>
+        </ul>
+    </nav>
+    <main>
+        <div id="dashboard">
+            <h2>Dashboard</h2>
+            <div id="dashboardSections">
+                <div class="section">
+                    <h3>Enrolled Courses</h3>
+                    <p>View all your enrolled courses here.</p>
+                    <button id="enrolledCoursesButton">View Enrolled Courses</button>
+                </div>
+                <div class="section">
+                    <h3>Course Videos</h3>
+                    <p>View all your course videos here.</p>
+                    <button id="courseVideosButton">View Course Videos</button>
+                </div>
+            </div>
+        </div>
+        <div id="enrolledCourses">
+            <h2>Enrolled Courses</h2>
+            <div id="enrolledCoursesList"></div>
+        </div>
+        <div id="courseVideos">
+            <h2>Course Videos</h2>
+            <div id="courseVideosList"></div>
+        </div>
+    </main>
+
+    <script>
+        const enrolledCoursesButton = document.getElementById('enrolledCoursesButton');
+        const courseVideosButton = document.getElementById('courseVideosButton');
+        const enrolledCourses = document.getElementById('enrolledCourses');
+        const courseVideos = document.getElementById('courseVideos');
+
+        enrolledCoursesButton.addEventListener('click', () => {
+            enrolledCourses.style.display = 'block';
+            courseVideos.style.display = 'none';
+        });
+
+        courseVideosButton.addEventListener('click', () => {
+            enrolledCourses.style.display = 'none';
+            courseVideos.style.display = 'block';
+        });
+    </script>
+</body>
+
+</html>

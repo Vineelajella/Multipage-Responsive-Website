@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - View Messages</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h2>Admin - Messages</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Subject</th>
+                <th>Message</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody id="messageTableBody">
+            <!-- Messages will be inserted here dynamically -->
+        </tbody>
+    </table>
+
+    <script>
+        function loadMessages() {
+            // Retrieve messages from localStorage
+            const messages = JSON.parse(localStorage.getItem('messages')) || [];
+
+            const tableBody = document.getElementById('messageTableBody');
+            tableBody.innerHTML = ''; // Clear existing entries
+
+            // Loop through messages and append each as a new row in the table
+            messages.forEach(msg => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${msg.name}</td>
+                    <td>${msg.email}</td>
+                    <td>${msg.subject}</td>
+                    <td>${msg.message}</td>
+                    <td>${new Date(msg.date).toLocaleString()}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Load messages on page load
+        window.onload = loadMessages;
+    </script>
+</body>
+</html>

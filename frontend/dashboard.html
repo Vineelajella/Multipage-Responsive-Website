@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+            color: #333;
+        }
+    
+        nav {
+            background-color: #4c4c9d;
+            color: white;
+            width: 250px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        }
+    
+        nav h3 {
+            margin: 0;
+            padding: 10px 0;
+            text-align: center;
+            color: #ffc107;
+            font-size: 24px;
+        }
+    
+        nav .username {
+            margin-bottom: 30px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+        }
+    
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+    
+        nav ul li {
+            margin: 10px 0;
+        }
+    
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 12px 15px;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+            display: block;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    
+        nav a:hover {
+            background-color: #6a67ce;
+        }
+    
+        nav .active {
+            background-color: #ffc107;
+            color: black;
+        }
+    
+        main {
+            margin-left: 250px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            padding: 0;
+        }
+    
+        #dashboard {
+            flex-grow: 1;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100vh;
+        }
+    
+        #dashboard h2 {
+            margin-bottom: 20px;
+            color: #4c4c9d;
+            text-align: center;
+        }
+    
+        #dashboardSections {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+    
+        .section {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            margin-left: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+    
+        .section:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+    
+        .section h3 {
+            color: #4c4c9d;
+            margin-bottom: 10px;
+        }
+    
+        .section p {
+            color: #555;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+    
+        #enrolledCourses,
+        #courseVideos {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: calc(100% - 120px);
+            margin: 20px auto;
+            height: auto;
+            overflow-y: auto;
+            display: none; /* Initially hidden */
+        }
+    
+        .course {
+            background: #f9f9f9;
+            border: 1px solid #dedede;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: box-shadow 0.3s;
+        }
+    
+        .course:hover {
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+    
+        .course h3 {
+            margin: 0 0 10px;
+            color: #4c4c9d;
+        }
+    
+        .course p {
+            margin: 5px 0;
+        }
+    
+        .video {
+            margin-bottom: 20px;
+        }
+    
+        .video h4 {
+            margin: 0 0 10px;
+            color: #4c4c9d;
+        }
+    
+        .video iframe {
+            width: 100%;
+            height: 200px;
+            border: none;
+            border-radius: 8px;
+        }
+    
+        @media (max-width: 768px) {
+            nav {
+                width: 100%;
+                height: auto;
+                position: relative;
+                box-shadow: none;
+            }
+    
+            nav ul {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+            }
+    
+            main {
+                margin-left: 0;
+                padding: 10px;
+            }
+    
+            #dashboardSections {
+                flex-direction: column;
+                align-items: center;
+            }
+    
+            .section {
+                width: 90%;
+                margin: 10px 0;
+            }
+    
+            #enrolledCourses,
+            #courseVideos {
+                width: 100%;
+            }
+    
+            #dashboard h2 {
+                font-size: 24px;
+            }
+        }
+        /* Media Queries for additional adjustments */
+@media (max-width: 600px) {
+    #courseVideos {
+        padding: 2px; /* Reduced padding for smaller screens */
+    }
+
+    .video {
+        margin-bottom: 15px; /* Reduce space between videos */
+    }
+
+    .video h4 {
+        font-size: 1em; /* Further reduce title size on mobile */
+    }
+}
+    </style>
+    
+</head>
+
+<body>
+    <nav>
+        <h3>Dashboard</h3>
+        <div class="username" id="username"></div>
+        <ul>
+            <li><a href="#" id="showHomeBtn" class="active">Home</a></li>
+            <li><a href="#" id="showCoursesBtn">Courses</a></li>
+            <li><a href="#" id="showVideosBtn">Course Videos</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="dashboard">
+            <h2>Welcome, <span id="welcomeUsername"></span>!</h2>
+            <div id="dashboardSections">
+                <div class="section">
+                    <h3>Notifications</h3>
+                    <p>You have new notifications. Check the latest updates from your courses and upcoming events.</p>
+                </div>
+                <div class="section">
+                    <h3>Tasks</h3>
+                    <p>Complete your pending assignments.</p>
+                </div>
+                <div class="section">
+                    <h3>Statistics</h3>
+                    <p>View your course progress and performance stats. Track your progress over time.</p>
+                </div>
+            </div>
+        </section>
+    
+        <section id="enrolledCourses">
+            <!-- Enrolled courses will be inserted here dynamically -->
+        </section>
+    
+        <section id="courseVideos" style="display: none;">
+            <h2>Course Videos</h2>
+            <div id="videoContainer">
+                <!-- Video links will be inserted here dynamically -->
+                <div class="video"></div>
+                <h4>Java Tutorial Course</h4>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/BGTx91t8q50?si=V0aaVwVSytdFbiRp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <h4>JavaSCript  Course</h4>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/9M4XKi25I2M?si=QUgjx74OtoYnLePq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <div class="video"></div>
+                <h4>Python Course</h4>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/XKHEtdqhLK8?si=KeZHMo7QqaUeL72I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <div class="video"></div>
+                <h4>HTML CSS  Course</h4>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/ts1DDgJyWTk?si=-eRYr8y3B9l0T_8R" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <div class="video"></div>
+                <h4>Machine Learning Course</h4>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/GwIo3gDZCVQ?si=V3wy9REpZJAKYUBJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <div class="video"></div>
+                <h4>App Development Course</h4>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/CzRQ9mnmh44?si=137t0Jb4clT-lNY8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <div class="video"></div>
+                <h4>Machine Learning Course</h4>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/GwIo3gDZCVQ?si=V3wy9REpZJAKYUBJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <div class="video"></div>
+                <h4>Angular Js Course</h4>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/CGLdH5ORX-Y?si=JJs9JgYSxsalPg_O" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <!-- Add more video sections as needed -->
+            </div>
+        </section>
+    </main>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const showHomeBtn = document.getElementById('showHomeBtn');
+            const showCoursesBtn = document.getElementById('showCoursesBtn');
+            const showVideosBtn = document.getElementById('showVideosBtn');
+            const dashboard = document.getElementById('dashboard');
+            const enrolledCourses = document.getElementById('enrolledCourses');
+            const courseVideos = document.getElementById('courseVideos');
+            const welcomeUsername = document.getElementById('welcomeUsername');
+    
+            // Initially hide enrolled courses and show dashboard
+            enrolledCourses.style.display = 'none';
+            courseVideos.style.display = 'none';
+            dashboard.style.display = 'block';
+    
+            // Show enrolled courses on "Courses" click, hide dashboard and videos
+            showCoursesBtn.addEventListener('click', function () {
+                enrolledCourses.style.display = 'block';
+                dashboard.style.display = 'none';
+                courseVideos.style.display = 'none';
+                showHomeBtn.classList.remove('active');
+                showCoursesBtn.classList.add('active');
+            });
+    
+            // Show course videos on "Course Videos" click, hide dashboard and enrolled courses
+            showVideosBtn.addEventListener('click', function () {
+                courseVideos.style.display = 'block';
+                enrolledCourses.style.display = 'none';
+                dashboard.style.display = 'none';
+                showHomeBtn.classList.remove('active');
+                showVideosBtn.classList.add('active');
+            });
+    
+            // Show dashboard on "Home" click, hide enrolled courses and course videos
+            showHomeBtn.addEventListener('click', function () {
+                enrolledCourses.style.display = 'none';
+                courseVideos.style.display = 'none';
+                dashboard.style.display = 'block';
+                showCoursesBtn.classList.remove('active');
+                showVideosBtn.classList.remove('active');
+                showHomeBtn.classList.add('active');
+            });
+    
+            // Fetch and display enrollments data
+            // Get the current user's details from local storage
+            
+    
+           // Fetch and display enrollments data
+// Get the current user's details from local storage
+                    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+                    if (!currentUser) {
+                        window.location.href = 'login.html';
+                    } else {
+                        // Fetch enrollments for the current user
+                        fetch(`http://localhost:3000/api/enrollments/${currentUser.username}`)
+                            .then(response => response.json())
+                            .then(enrollments => {
+                                const courseContainer = document.getElementById('enrolledCourses');
+                                const videoContainer = document.getElementById('videoContainer');
+                                const username = currentUser.username;
+                                document.getElementById('username').innerText = `Hello, ${username}!`;
+                                document.getElementById('welcomeUsername').innerText = username;
+
+                                if (enrollments.length > 0) {
+                                    let coursesHtml = `<h2>Enrolled Courses:</h2>`;
+                                    enrollments.forEach(enrollment => {
+                                        coursesHtml += `
+                                            <div class="course" data-course-name="${enrollment.courseName}">
+                                            <h3>${enrollment.courseName}</h3>
+                                            <p>Enrolled At: ${new Date(enrollment.enrolledAt).toLocaleDateString()}</p>
+                                            </div>
+                                        `;
+                                    });
+                                    courseContainer.innerHTML = coursesHtml;
+
+                                    // Fetch course videos
+                                    fetch('http://localhost:3000/api/course-videos')
+                                        .then(response => response.json())
+                                        .then(courseVideos => {
+                                            // Filter course videos based on enrolled courses
+                                            const filteredVideos = courseVideos.filter(video => {
+                                                return enrollments.some(enrollment => enrollment.courseName === video.courseName);
+                                            });
+
+                                            // Add event listeners to course containers
+                                            const courseContainers = document.querySelectorAll('.course');
+                                            courseContainers.forEach(container => {
+                                                container.addEventListener('click', () => {
+                                                    const courseName = container.getAttribute('data-course-name');
+                                                    const videoHtml = filteredVideos.filter(video => video.courseName === courseName).map(video => {
+                                                        return `
+                                                            <div class="video">
+                                                            <h4>${video.courseName}</h4>
+                                                            <iframe width="560" height="315" src="${video.url}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                                            </div>
+                                                        `;
+                                                    }).join('');
+                                                    videoContainer.innerHTML = videoHtml;
+                                                });
+                                            });
+                                        })
+                                        .catch(error => console.error('Error fetching course videos:', error));
+                                } else {
+                                    courseContainer.innerHTML = '<h2>Enrolled Courses:</h2><p>No courses enrolled yet.</p>';
+                                    videoContainer.innerHTML = '';
+                                }
+                            })
+                            .catch(error => console.error('There was a problem with the fetch operation:', error));
+                    }
+        });
+    </script>
+</body>
+
+</html>
+

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multipage Responsive Website</title>
+    <link rel="stylesheet" href="web.css">
+    <link rel="stylesheet" href="ab.css">
+    <link rel="stylesheet" href="course.css">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <img src="ed.png" class="img1" alt="Logo">
+        <div class="navbar">
+            <ul>
+                <li><a href="index.html" >Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="course.html" class="active" style="color:rgb(243, 170, 14)">Courses</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="login.html">My Dashboard</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!--Home-->
+    <section id="about-home">
+        <h2>Enroll in Our Popular Courses and SkillUp!</h2>
+    </section>
+
+    <!--Courses-->
+    <section id="course-inner">
+        <div class="overview">
+            <img class="c-image" src="images/ml.avif" alt="">
+            <div class="course-head">
+                <div class="c-name">
+                    <h3>Machine Learning Beginner Courses</h3>
+                </div>
+                <div class="star">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <p>Learn the foundations of Machine Learning and build models from scratch!</p>
+            </div>
+            <div class="cos">
+                <span>499/-</span>
+            </div>
+        
+            <div class="instructor">
+                <div class="tutor">
+                    <img src="images/c4.jpg" alt="Instructor Image">
+                    <div class="tutor-det">
+                        <h5>Jane Smith</h5>
+                        <p>Data Scientist at Google</p>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="course-overview">
+                <h3>Course Overview</h3>
+                <p>This Machine Learning course provides a comprehensive introduction to the core concepts and algorithms behind machine learning. Whether you're a complete beginner or have some experience, this course will help you understand how to build predictive models, evaluate their performance, and apply machine learning techniques to real-world data. Starting from the basics of supervised and unsupervised learning, this course gradually introduces advanced topics like neural networks, natural language processing (NLP), and deep learning.
+                    <br><br>
+                    The course is structured to offer hands-on learning. You'll begin with foundational topics like regression, classification, and clustering techniques using popular tools such as Python, TensorFlow, and Scikit-learn. As you progress, you'll work on projects that involve building predictive models, data pre-processing, and model tuning using algorithms like decision trees, support vector machines, and random forests.
+                    <br><br>
+                    Taught by industry professionals, this course ensures practical exposure through coding exercises, quizzes, and projects, allowing you to build and deploy machine learning models. The course also emphasizes the importance of real-world application, making you job-ready with portfolio-worthy projects and industry insights.
+                </p>
+                <hr>
+                <br>
+                <h3>What will you learn</h3>
+                <br>
+                <div class="learn">
+                    <p><i class="far fa-check-circle"></i>Machine Learning fundamentals and algorithms</p>
+                    <p><i class="far fa-check-circle"></i>Supervised and unsupervised learning techniques</p>
+                    <p><i class="far fa-check-circle"></i>Working with Scikit-learn, TensorFlow, and Keras</p>
+                    <p><i class="far fa-check-circle"></i>Building classification, regression, and clustering models</p>
+                    <p><i class="far fa-check-circle"></i>Data pre-processing, feature selection, and model evaluation</p>
+                    <p><i class="far fa-check-circle"></i>Neural networks and deep learning basics</p>
+                    <p><i class="far fa-check-circle"></i>Real-world projects: predictive modeling and data analytics</p>
+                </div>
+            </div>
+        </div>
+        <div class="enroll">
+            <h3>This course includes:</h3>
+            <p><i class="far fa-video"></i>70 hours of video</p>
+            <p><i class="far fa-newspaper"></i>120 articles</p>
+            <p><i class="far fa-cloud-download"></i>Downloadable resources</p>
+            <p><i class="far fa-infinity"></i>Lifetime Access</p>
+            <p><i class="far fa-mobile-alt"></i>Mobile view access</p>
+            <p><i class="far fa-paperclip"></i>Assignments</p>
+            <p><i class="fa-solid fa-trophy"></i>Certificate of completion</p>
+            <div class="enrol-btn">
+                <a class="blue" href="javascript:void(0)" onclick="openEnrollPopup()">Enroll in Course</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enrollment Popup -->
+    <div id="enrollPopup" class="popup" style="display: none;">
+        <div class="popup-content">
+            <h3>Enroll in JavaScript Course</h3>
+            <form id="enrollForm">
+                <label for="username">Name:</label>
+                <input type="text" id="username" required><br>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" required><br>
+
+                <label for="phone">Phone:</label>
+                <input type="tel" id="phone" required><br>
+
+                <label for="courseCost">Course Cost:</label>
+                <input type="text" id="courseCost" readonly value="499/-"><br>
+
+                <label for="paymentMethod">Payment Method:</label>
+                <select id="paymentMethod" required>
+                    <option value="UPI">UPI</option>
+                    <option value="PhonePe">PhonePe</option>
+                    <option value="Credit Card">Credit Card</option>
+                    <option value="Net Banking">Net Banking</option>
+                </select><br>
+
+                <button type="submit">Submit</button>
+                <button type="button" onclick="closeEnrollPopup()">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Thank You Popup -->
+    <div id="thankYouPopup" class="popup" style="display: none;">
+        <div class="popup-content">
+            <h3>Thank You for Enrolling!</h3>
+            <p>You can start your journey now.</p>
+            <button type="button" onclick="closeThankYouPopup()">Close</button>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <!-- Footer content -->
+    </footer>
+
+    <script>
+        // Open the Enroll Popup
+        function openEnrollPopup() {
+            document.getElementById('enrollPopup').style.display = 'block';
+        }
+
+        // Close the Enroll Popup
+        function closeEnrollPopup() {
+            document.getElementById('enrollPopup').style.display = 'none';
+        }
+
+        // Close the Thank You Popup
+        function closeThankYouPopup() {
+            document.getElementById('thankYouPopup').style.display = 'none';
+        }
+
+        // Form Validation Function
+        function validateForm() {
+            const username = document.getElementById('username').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const paymentMethod = document.getElementById('paymentMethod').value;
+
+            // Check for empty fields
+            if (!username || !email || !phone || !paymentMethod) {
+                alert('All fields are required for enrollment.');
+                return false;
+            }
+
+            // Validate email format
+            const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            if (!emailPattern.test(email)) {
+                alert('Please enter a valid email address.');
+                return false;
+            }
+
+            // Validate phone number (10 digits for India)
+            const phonePattern = /^[0-9]{10}$/;
+            if (!phonePattern.test(phone)) {
+                alert('Please enter a valid 10-digit phone number.');
+                return false;
+            }
+
+            // If all validations pass, return true
+            return true;
+        }
+
+        // Handle the form submission and store the course data
+        document.getElementById('enrollForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Validate form
+            if (!validateForm()) {
+                console.log("Form validation failed!");
+                return; // Do not proceed with the form submission
+            }
+
+            // Collect form data
+            const formData = {
+                username: document.getElementById('username').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                phone: document.getElementById('phone').value.trim(),
+                courseName: 'Machine Learning  Course',
+                courseCost: document.getElementById('courseCost').value.trim(),
+                paymentMethod: document.getElementById('paymentMethod').value
+            };
+
+            // Check if the user is already enrolled in this course
+            fetch('http://localhost:3000/api/enroll', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    return response.json().then(data => { throw new Error(data.message); });
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Enrollment successful
+                closeEnrollPopup();
+                document.getElementById('thankYouPopup').style.display = 'block';
+
+                // Redirect to the dashboard after a few seconds
+                setTimeout(() => {
+                    window.location.href = '#'; // Redirect to dashboard.html
+                }, 2000);
+            })
+            .catch(error => {
+                alert(error.message); // Show the error message (e.g., "User already enrolled in this course.")
+            });
+        });
+    </script>
+</body>
+</html>
