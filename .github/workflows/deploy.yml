@@ -1,55 +1,39 @@
-name: Full-Stack CI/CD Pipeline
+name: Deploy to Railway
 
-# Trigger the workflow on push or pull request
 on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
-# Define jobs
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout the repository
-      - uses: actions/checkout@v2
+    # Checkout the latest code from your repo
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      # Set up Node.js for backend
-      - name: Set up Node.js for Backend
-        uses: actions/setup-node@v2
-        with:
-          node-version: '16'
+    # Set up Node.js (You can specify your Node.js version here)
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16' # Specify the Node.js version
 
-      # Install backend dependencies
-      - name: Install Backend Dependencies
-        run: |
-          cd backend
-          npm install
+    # Install dependencies
+    - name: Install dependencies
+      run: |
+        npm install
 
-      # Set up Node.js for frontend
-      - name: Set up Node.js for Frontend
-        uses: actions/setup-node@v2
-        with:
-          node-version: '16'
+    # Build the project (Adjust this command based on your project structure)
+    - name: Build project
+      run: |
+        npm run build # For frontend, or adjust if necessary
 
-      # Install frontend dependencies
-      - name: Install Frontend Dependencies
-        run: |
-          cd frontend
-          npm install
+    # Deploy to Railway (Make sure the Railway CLI is available)
+    - name: Deploy to Railway
+      env:
+        RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }} # Set this token in GitHub Secrets
+      run: |
+        npx railway up
 
-      # Build frontend for production
-      - name: Build Frontend
-        run: |
-          cd frontend
-          npm run build
-
-      # Run tests for backend (you can skip if not needed)
-      - name: Run Backend Tests
-        run: |
-          cd backend
-          npm test
